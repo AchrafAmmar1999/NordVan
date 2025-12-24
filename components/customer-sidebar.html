@@ -1,0 +1,43 @@
+<!-- Hamburger Button -->
+<button class="btn btn-dark sidebar-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#customerSidebar" aria-controls="customerSidebar">
+  <i class="fas fa-bars me-2"></i>All
+</button>
+
+<!-- Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="customerSidebar" aria-labelledby="customerSidebarLabel" style="width: 300px;">
+  <div class="offcanvas-header" style="background-color: var(--sidebar); border-bottom: 1px solid var(--border);">
+    <h5 class="offcanvas-title" id="customerSidebarLabel">
+      <i class="fas fa-user-circle me-2"></i>
+      <span id="sidebar-username">Customer Menu</span>
+    </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" style="background-color: var(--sidebar); padding: 0;">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="/pages/customer/dashboard.html" class="sidebar-nav-link" data-page="dashboard">
+          <i class="fas fa-home"></i>
+          Dashboard
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="/pages/customer/wishlist.html" class="sidebar-nav-link" data-page="wishlist">
+          <i class="fas fa-heart"></i>
+          Wishlist
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="/pages/customer/customer-bookings.html" class="sidebar-nav-link" data-page="bookings">
+          <i class="fas fa-calendar-check"></i>
+          My Bookings
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="/pages/shared/profile.html" class="sidebar-nav-link" data-page="profile">
+          <i class="fas fa-user"></i>
+          Profile
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

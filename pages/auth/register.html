@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <div class="min-vh-100 d-flex align-items-center justify-content-center py-5" style="background-color: var(--background);">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+              <!-- Logo -->
+              <div class="text-center mb-4">
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                  <i class="fas fa-caravan fa-3x" style="color: var(--primary);"></i>
+                </div>
+                <h2 class="mb-2">Create Account</h2>
+                <p class="text-muted">Join NordVan and start your adventure</p>
+              </div>
+
+              <!-- Alert for messages -->
+              <div id="alert-container"></div>
+
+              <!-- Registration Form -->
+              <form id="register-form" class="needs-validation" novalidate>
+                <!-- Account Type -->
+                <div class="mb-4">
+                  <label class="form-label">I want to register as:</label>
+                  <div class="d-flex gap-3">
+                    <div class="form-check flex-fill">
+                      <input class="form-check-input" type="radio" name="role" id="role-customer" value="customer" checked>
+                      <label class="form-check-label w-100" for="role-customer">
+                        <div class="card h-100">
+                          <div class="card-body text-center">
+                            <i class="fas fa-user fa-2x mb-2" style="color: var(--primary);"></i>
+                            <h6>Customer</h6>
+                            <small class="text-muted">Rent motorhomes</small>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="form-check flex-fill">
+                      <input class="form-check-input" type="radio" name="role" id="role-provider" value="provider">
+                      <label class="form-check-label w-100" for="role-provider">
+                        <div class="card h-100">
+                          <div class="card-body text-center">
+                            <i class="fas fa-handshake fa-2x mb-2" style="color: var(--primary);"></i>
+                            <h6>Provider</h6>
+                            <small class="text-muted">Rent out vehicles</small>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- First Name -->
+                  <div class="col-md-6 mb-3">
+                    <label for="first-name" class="form-label">First Name</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="first-name" 
+                      name="first-name" 
+                      placeholder="John"
+                      required>
+                    <div class="invalid-feedback">
+                      Please enter your first name.
+                    </div>
+                  </div>
+
+                  <!-- Last Name -->
+                  <div class="col-md-6 mb-3">
+                    <label for="last-name" class="form-label">Last Name</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="last-name" 
+                      name="last-name" 
+                      placeholder="Doe"
+                      required>
+                    <div class="invalid-feedback">
+                      Please enter your last name.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    name="email" 
+                    placeholder="you@example.com"
+                    data-validate="email"
+                    required>
+                  <div class="invalid-feedback">
+                    Please enter a valid email address.
+                  </div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    name="password" 
+                    placeholder="At least 8 characters"
+                    data-validate="password"
+                    required>
+                  <div class="invalid-feedback">
+                    Password must be at least 8 characters.
+                  </div>
+                  <div class="form-text">
+                    Use at least 8 characters with a mix of letters, numbers & symbols.
+                  </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                  <label for="confirm-password" class="form-label">Confirm Password</label>
+                  <input 
+                    type="password" 
+                    class="form-control" 
+                    id="confirm-password" 
+                    name="confirm-password" 
+                    placeholder="Re-enter your password"
+                    data-validate="password-confirm"
+                    required>
+                  <div class="invalid-feedback">
+                    Passwords do not match.
+                  </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="terms" required>
+                    <label class="form-check-label" for="terms">
+                      I agree to the <a href="terms.html" class="text-primary">Terms & Conditions</a> 
+                      and <a href="privacy.html" class="text-primary">Privacy Policy</a>
+                    </label>
+                    <div class="invalid-feedback">
+                      You must agree to the terms and conditions.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100 mb-3">
+                  <i class="fas fa-user-plus me-2"></i>Create Account
+                </button>
+
+                <!-- Divider -->
+                <div class="text-center mb-3">
+                  <span class="text-muted">or</span>
+                </div>
+
+                <!-- Login Link -->
+                <div class="text-center">
+                  <p class="mb-0">Already have an account? 
+                    <a href="login.html" class="text-primary text-decoration-none fw-semibold">
+                      Sign In
+                    </a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Back to Home -->
+          <div class="text-center mt-4">
+            <a href="../../index.html" class="text-muted text-decoration-none">
+              <i class="fas fa-arrow-left me-2"></i>Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

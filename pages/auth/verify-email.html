@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Email - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <div class="min-vh-100 d-flex align-items-center justify-content-center py-5" style="background-color: var(--background);">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+              <!-- Logo and Header -->
+              <div class="text-center mb-4">
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                       style="width: 80px; height: 80px; background-color: var(--secondary);">
+                    <i class="fas fa-envelope-open-text fa-2x" style="color: var(--primary);"></i>
+                  </div>
+                </div>
+                <h2 class="mb-2">Verify Your Email</h2>
+                <p class="text-muted">We've sent a verification code to:</p>
+                <p class="fw-bold mb-0" id="user-email">user@example.com</p>
+              </div>
+
+              <!-- Alert for messages -->
+              <div id="alert-container"></div>
+
+              <!-- Verification Form -->
+              <form id="verify-form" class="needs-validation" novalidate>
+                <div class="mb-4">
+                  <label for="verification-code" class="form-label">Verification Code</label>
+                  <input 
+                    type="text" 
+                    class="form-control form-control-lg text-center" 
+                    id="verification-code" 
+                    name="verification-code" 
+                    placeholder="Enter 6-digit code"
+                    maxlength="6"
+                    pattern="\d{6}"
+                    required
+                    autocomplete="off"
+                    style="letter-spacing: 0.5em; font-size: 1.5rem; font-weight: 600;">
+                  <div class="invalid-feedback">
+                    Please enter a valid 6-digit code.
+                  </div>
+                </div>
+
+                <!-- Verify Button -->
+                <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">
+                  <i class="fas fa-check-circle me-2"></i>Verify Email
+                </button>
+              </form>
+
+              <!-- Resend Code -->
+              <div class="text-center mt-4">
+                <p class="text-muted mb-2">Didn't receive the code?</p>
+                <button id="resend-btn" class="btn btn-link text-decoration-none p-0">
+                  <i class="fas fa-redo me-1"></i>Resend Code
+                </button>
+                <p class="text-muted small mt-2" id="timer-text" style="display: none;">
+                  Resend available in <span id="timer">60</span> seconds
+                </p>
+              </div>
+
+              <!-- Back to Register -->
+              <div class="text-center mt-4 pt-3 border-top">
+                <p class="text-muted mb-0">
+                  <a href="register.html" class="text-decoration-none">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Register
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Help Section -->
+          <div class="card mt-3 border-0 bg-transparent">
+            <div class="card-body text-center">
+              <p class="text-muted small mb-2">
+                <i class="fas fa-info-circle me-1"></i>
+                Check your spam folder if you don't see the email
+              </p>
+              <p class="text-muted small mb-0">
+                Need help? <a href="impressum.html#contact" class="text-decoration-none">Contact Support</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

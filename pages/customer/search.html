@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Vehicles - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <!-- Navbar Container -->
+  <div id="navbar-container"></div>
+
+  <div class="d-flex">
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="flex-fill" style="background-color: var(--background); min-height: calc(100vh - 73px);">
+      <div class="p-4">
+        <div class="mb-4">
+          <h2>Search Vehicles</h2>
+          <p class="text-muted">Find your perfect motorhome</p>
+        </div>
+
+        <div class="row">
+          <!-- Filters Sidebar -->
+          <div class="col-lg-3 mb-4">
+          <div class="filter-panel">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="filter-title mb-0">Filters</h5>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="reset-filters">
+                <i class="fas fa-redo"></i> Reset
+              </button>
+            </div>
+
+            <form id="filter-form">
+              <!-- Location -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Location</label>
+                <input type="text" class="form-control" name="location" placeholder="Enter location">
+              </div>
+
+              <!-- Dates -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Rental Period</label>
+                <input type="date" class="form-control mb-2" name="pickup-date" placeholder="Pick-up" data-min-today>
+                <input type="date" class="form-control" name="return-date" placeholder="Return" data-min-today>
+              </div>
+
+              <!-- Price Range -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Price per Day</label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <input type="number" class="form-control" name="price-min" placeholder="€50" min="0">
+                  </div>
+                  <div class="col-6">
+                    <input type="number" class="form-control" name="price-max" placeholder="€800" min="0">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vehicle Type -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Vehicle Type</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="type" value="campervan" id="type-campervan">
+                  <label class="form-check-label" for="type-campervan">Campervan</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="type" value="motorhome" id="type-motorhome">
+                  <label class="form-check-label" for="type-motorhome">Motorhome</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="type" value="4x4-camper" id="type-4x4">
+                  <label class="form-check-label" for="type-4x4">4×4 Camper</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="type" value="trailer" id="type-trailer">
+                  <label class="form-check-label" for="type-trailer">Trailer</label>
+                </div>
+              </div>
+
+              <!-- Seats -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Number of Seats</label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <input type="number" class="form-control" name="seats-min" placeholder="Min" min="1" max="8">
+                  </div>
+                  <div class="col-6">
+                    <input type="number" class="form-control" name="seats-max" placeholder="Max" min="1" max="8">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Beds -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Number of Beds</label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <input type="number" class="form-control" name="beds-min" placeholder="Min" min="1" max="8">
+                  </div>
+                  <div class="col-6">
+                    <input type="number" class="form-control" name="beds-max" placeholder="Max" min="1" max="8">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Drivetrain -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Drivetrain</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="drivetrain" value="electric" id="drive-electric">
+                  <label class="form-check-label" for="drive-electric">Electric</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="drivetrain" value="diesel" id="drive-diesel">
+                  <label class="form-check-label" for="drive-diesel">Diesel</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="drivetrain" value="petrol" id="drive-petrol">
+                  <label class="form-check-label" for="drive-petrol">Petrol</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="drivetrain" value="gas" id="drive-gas">
+                  <label class="form-check-label" for="drive-gas">Gas</label>
+                </div>
+              </div>
+
+              <!-- Transmission -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Transmission</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="transmission" value="all" id="trans-all" checked>
+                  <label class="form-check-label" for="trans-all">All</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="transmission" value="automatic" id="trans-auto">
+                  <label class="form-check-label" for="trans-auto">Automatic</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="transmission" value="manual" id="trans-manual">
+                  <label class="form-check-label" for="trans-manual">Manual</label>
+                </div>
+              </div>
+
+              <!-- Emission Class -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Emission Class</label>
+                <select class="form-select" name="emission">
+                  <option value="">All classes</option>
+                  <option value="euro6">Euro 6</option>
+                  <option value="euro5">Euro 5</option>
+                  <option value="euro4">Euro 4</option>
+                  <option value="euro3">Euro 3</option>
+                </select>
+              </div>
+
+              <!-- Features -->
+              <div class="filter-group">
+                <label class="form-label fw-semibold">Features</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="features" value="kitchen" id="feat-kitchen">
+                  <label class="form-check-label" for="feat-kitchen">Kitchen</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="features" value="shower" id="feat-shower">
+                  <label class="form-check-label" for="feat-shower">Shower</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="features" value="toilet" id="feat-toilet">
+                  <label class="form-check-label" for="feat-toilet">Toilet</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="features" value="ac" id="feat-ac">
+                  <label class="form-check-label" for="feat-ac">Air Conditioning</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="features" value="heating" id="feat-heating">
+                  <label class="form-check-label" for="feat-heating">Heating</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="features" value="solar" id="feat-solar">
+                  <label class="form-check-label" for="feat-solar">Solar Panels</label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">
+                <i class="fas fa-filter me-2"></i>Apply Filters
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="col-lg-9">
+          <!-- Search Bar & Sort -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-8">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input type="text" class="form-control" id="search-input" placeholder="Search by name, brand, location...">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <select class="form-select" id="sort-select">
+                    <option value="recommended">Recommended</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="newest">Newest First</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Info -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="mb-0">86 vehicles found</h5>
+            <span class="text-muted">Page 1 of 8</span>
+          </div>
+
+          <!-- Vehicle Results Grid -->
+          <div class="row g-4" id="results-container">
+            <!-- Vehicles will be loaded here - same structure as homepage cards -->
+            <!-- Vehicle 1 -->
+            <div class="col-md-6">
+              <div class="card vehicle-card">
+                <button class="wishlist-btn" data-vehicle-id="1">
+                  <i class="far fa-heart"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?auto=format&fit=crop&w=600&q=80" alt="Grand California 600" class="vehicle-card-img">
+                <div class="card-body vehicle-card-body">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="vehicle-card-title mb-0">Grand California 600</h5>
+                    <span class="badge badge-success">Available</span>
+                  </div>
+                  <div class="vehicle-card-price">
+                    €180 <span>/ day</span>
+                  </div>
+                  <div class="vehicle-attributes mb-3">
+                    <span class="attribute-badge">
+                      <i class="fas fa-users"></i> 4 Seats
+                    </span>
+                    <span class="attribute-badge">
+                      <i class="fas fa-bed"></i> 2 Beds
+                    </span>
+                    <span class="attribute-badge">
+                      <i class="fas fa-gas-pump"></i> Diesel
+                    </span>
+                    <span class="attribute-badge">
+                      <i class="fas fa-cog"></i> Auto
+                    </span>
+                  </div>
+                  <a href="vehicle-detail.html?id=1" class="btn btn-primary w-100">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add more vehicle cards as needed -->
+          </div>
+
+          <!-- Pagination -->
+          <nav aria-label="Search results pagination" class="mt-5">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><span class="page-link">...</span></li>
+              <li class="page-item"><a class="page-link" href="#">8</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+   </div>
+</div>
+
+  <!-- Footer Container -->
+  <div id="footer-container"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

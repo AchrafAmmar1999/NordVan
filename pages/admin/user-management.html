@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management - NordVan Admin</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <div id="navbar-container"></div>
+
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="flex-fill" style="background-color: var(--background); min-height: calc(100vh - 73px);">
+      <div class="p-4">
+        <!-- Header -->
+        <div class="mb-4 d-flex justify-content-between align-items-center">
+          <div>
+            <h2>User Management</h2>
+            <p class="text-muted mb-0">Manage customers, providers, and administrators</p>
+          </div>
+        
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-3">
+            <div class="stats-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="stats-label">Total Users</div>
+                  <div class="stats-value">1,248</div>
+                </div>
+                <i class="fas fa-users fa-2x" style="color: var(--primary);"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="stats-label">Customers</div>
+                  <div class="stats-value">956</div>
+                </div>
+                <i class="fas fa-user fa-2x" style="color: var(--success);"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="stats-label">Providers</div>
+                  <div class="stats-value">289</div>
+                </div>
+                <i class="fas fa-handshake fa-2x" style="color: var(--accent);"></i>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search by name or email...">
+              </div>
+              <div class="col-md-2">
+                <select class="form-select" id="roleFilter">
+                  <option value="">All Roles</option>
+                  <option value="customer">Customer</option>
+                  <option value="provider">Provider</option>
+                  <option value="admin">Administrator</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-select" id="statusFilter">
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="suspended">Suspended</option>
+                  <option value="pending">Pending</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-select" id="sortBy">
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                  <option value="name">Name A-Z</option>
+                  <option value="name-desc">Name Z-A</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary w-100" onclick="applyFilters()">
+                  <i class="fas fa-filter me-1"></i>Filter
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">All Users</h5>
+            
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" class="form-check-input" id="selectAll">
+                  </th>
+                  <th>User</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="checkbox" class="form-check-input">
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://ui-avatars.com/api/?name=Alex+Martinez&size=40&background=random" class="rounded-circle me-3">
+                      <div>
+                        <div class="fw-semibold">Alex Martinez</div>
+                        <small class="text-muted">ID: #1248</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>alex.m@example.com</td>
+                  <td>+1 234 567 8901</td>
+                  <td><span class="badge badge-secondary">Customer</span></td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-primary" onclick="openEditUserModal('1248', 'Alex Martinez', 'alex.m@example.com', '+1 234 567 8901', 'customer', 'active')" title="Edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-outline-danger" onclick="deleteUser('1248')" title="Delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" class="form-check-input">
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://ui-avatars.com/api/?name=Lisa+Kim&size=40&background=random" class="rounded-circle me-3">
+                      <div>
+                        <div class="fw-semibold">Lisa Kim</div>
+                        <small class="text-muted">ID: #1247</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>lisa.k@example.com</td>
+                  <td>+1 234 567 8902</td>
+                  <td><span class="badge" style="background-color: var(--accent); color: var(--accent-foreground);">Provider</span></td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-primary" onclick="openEditUserModal('1247', 'Lisa Kim', 'lisa.k@example.com', '+1 234 567 8902', 'provider', 'active')" title="Edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-outline-danger" onclick="deleteUser('1247')" title="Delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" class="form-check-input">
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://ui-avatars.com/api/?name=James+Rodriguez&size=40&background=random" class="rounded-circle me-3">
+                      <div>
+                        <div class="fw-semibold">James Rodriguez</div>
+                        <small class="text-muted">ID: #1246</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>james.r@example.com</td>
+                  <td>+1 234 567 8903</td>
+                  <td><span class="badge badge-secondary">Customer</span></td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-primary" onclick="openEditUserModal('1246', 'James Rodriguez', 'james.r@example.com', '+1 234 567 8903', 'customer', 'active')" title="Edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-outline-danger" onclick="deleteUser('1246')" title="Delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" class="form-check-input">
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://ui-avatars.com/api/?name=Emma+Smith&size=40&background=random" class="rounded-circle me-3">
+                      <div>
+                        <div class="fw-semibold">Emma Smith</div>
+                        <small class="text-muted">ID: #1245</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>emma.s@example.com</td>
+                  <td>+1 234 567 8904</td>
+                  <td><span class="badge" style="background-color: var(--accent); color: var(--accent-foreground);">Provider</span></td>
+                  <td><span class="badge badge-warning">Pending</span></td>
+                  <td>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-success" onclick="approveUser('1245')" title="Approve">
+                        <i class="fas fa-check"></i>
+                      </button>
+                      <button class="btn btn-outline-primary" onclick="openEditUserModal('1245', 'Emma Smith', 'emma.s@example.com', '+1 234 567 8904', 'provider', 'pending')" title="Edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-outline-danger" onclick="rejectUser('1245')" title="Reject">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" class="form-check-input">
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://ui-avatars.com/api/?name=Tom+Harris&size=40&background=random" class="rounded-circle me-3">
+                      <div>
+                        <div class="fw-semibold">Tom Harris</div>
+                        <small class="text-muted">ID: #1244</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>tom.h@example.com</td>
+                  <td>+1 234 567 8905</td>
+                  <td><span class="badge badge-danger">Admin</span></td>
+                  <td><span class="badge badge-success">Active</span></td>
+                  <td>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-primary" onclick="openEditUserModal('1244', 'Tom Harris', 'tom.h@example.com', '+1 234 567 8905', 'admin', 'active')" title="Edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-outline-warning" onclick="revokeAdmin('1244')" title="Revoke Admin">
+                        <i class="fas fa-user-minus"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" class="form-check-input">
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&size=40&background=random" class="rounded-circle me-3">
+                      <div>
+                        <div class="fw-semibold">Sarah Johnson</div>
+                        <small class="text-muted">ID: #1243</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>sarah.j@example.com</td>
+                  <td>+1 234 567 8906</td>
+                  <td><span class="badge badge-secondary">Customer</span></td>
+                  <td><span class="badge" style="background-color: var(--destructive); color: white;">Suspended</span></td>
+                  <td>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-success" onclick="activateUser('1243')" title="Activate">
+                        <i class="fas fa-check-circle"></i>
+                      </button>
+                      <button class="btn btn-outline-primary" onclick="openEditUserModal('1243', 'Sarah Johnson', 'sarah.j@example.com', '+1 234 567 8906', 'customer', 'suspended')" title="Edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-outline-danger" onclick="deleteUser('1243')" title="Delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <div class="row align-items-center">
+              <div class="col">
+                <small class="text-muted">Showing 1 to 6 of 1,248 users</small>
+              </div>
+              <div class="col-auto">
+                <nav>
+                  <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">208</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit User Modal -->
+  <div class="modal fade" id="userModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          <form id="userForm">
+            <input type="hidden" id="userId">
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="userName" required placeholder="Enter full name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="userEmail" required placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="userPhone" placeholder="+1 234 567 8900">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Role</label>
+              <select class="form-select" id="userRole" required>
+                <option value="">Select role...</option>
+                <option value="customer">Customer</option>
+                <option value="provider">Provider</option>
+                <option value="admin">Administrator</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Status</label>
+              <select class="form-select" id="userStatus" required>
+                <option value="active">Active</option>
+                <option value="suspended">Suspended</option>
+                <option value="pending">Pending</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="saveUser()">
+            <i class="fas fa-save me-2"></i>Save User
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View User Details Modal -->
+  <div class="modal fade" id="viewUserModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">User Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-3">
+              <img src="https://ui-avatars.com/api/?name=User+Name&size=150&background=random" class="rounded-circle mb-3" id="viewUserAvatar">
+              <h5 id="viewUserName">User Name</h5>
+              <span class="badge badge-secondary" id="viewUserRole">Customer</span>
+            </div>
+            <div class="col-md-8">
+              <table class="table table-borderless">
+                <tr>
+                  <th width="40%">User ID:</th>
+                  <td id="viewUserId">#1248</td>
+                </tr>
+                <tr>
+                  <th>Email:</th>
+                  <td id="viewUserEmail">user@example.com</td>
+                </tr>
+                <tr>
+                  <th>Phone:</th>
+                  <td id="viewUserPhone">+1 234 567 8900</td>
+                </tr>
+                <tr>
+                  <th>Status:</th>
+                  <td><span class="badge badge-success" id="viewUserStatus">Active</span></td>
+                </tr>
+                <tr>
+                  <th>Joined Date:</th>
+                  <td id="viewUserJoined">Dec 15, 2025</td>
+                </tr>
+               
+                  <th>Total Bookings:</th>
+                  <td id="viewUserBookings">15</td>
+                </tr>
+                <tr>
+                  <th>Total Spent:</th>
+                  <td id="viewUserSpent">€3,240</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="editFromView()">
+            <i class="fas fa-edit me-2"></i>Edit User
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Booking - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <div id="navbar-container"></div>
+
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="flex-fill" style="background-color: var(--background); min-height: calc(100vh - 73px);">
+      <div class="p-4">
+        <div class="mb-4">
+          <h2><i class="fas fa-calendar-check me-2"></i>Complete Your Booking</h2>
+          <p class="text-muted">Fill in the details to reserve your motorhome</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-11">
+          
+          <!-- Progress Indicator -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-fill">
+                  <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2" 
+                       style="width: 40px; height: 40px; background-color: var(--primary); color: white;">
+                    <i class="fas fa-calendar"></i>
+                  </div>
+                  <div class="small fw-semibold" style="color: var(--primary);">Dates & Location</div>
+                </div>
+                <div class="flex-fill" style="height: 2px; background-color: var(--muted); margin: 0 10px;"></div>
+                <div class="text-center flex-fill">
+                  <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2" 
+                       style="width: 40px; height: 40px; background-color: var(--primary); color: white;">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div class="small fw-semibold" style="color: var(--primary);">Insurance</div>
+                </div>
+                <div class="flex-fill" style="height: 2px; background-color: var(--muted); margin: 0 10px;"></div>
+                <div class="text-center flex-fill">
+                  <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2" 
+                       style="width: 40px; height: 40px; background-color: var(--primary); color: white;">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <div class="small fw-semibold" style="color: var(--primary);">Your Details</div>
+                </div>
+                <div class="flex-fill" style="height: 2px; background-color: var(--muted); margin: 0 10px;"></div>
+                <div class="text-center flex-fill">
+                  <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2" 
+                       style="width: 40px; height: 40px; background-color: var(--muted); color: var(--muted-foreground);">
+                    <i class="fas fa-credit-card"></i>
+                  </div>
+                  <div class="small text-muted">Payment</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            
+            <!-- Main Content -->
+            <div class="col-lg-8">
+              <!-- Step 1: Dates & Extras -->
+              <div class="card mb-4" id="step-1">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    <i class="fas fa-calendar me-2"></i>Rental Details
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                      <label class="form-label fw-semibold">Pick-up Date</label>
+                      <input type="date" class="form-control" id="pickup-date" data-min-today>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label fw-semibold">Return Date</label>
+                      <input type="date" class="form-control" id="return-date" data-min-today>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">Pick-up Location</label>
+                    <select class="form-select" id="location">
+                      <option value="san-francisco">San Francisco, CA</option>
+                      <option value="los-angeles">Los Angeles, CA</option>
+                      <option value="seattle">Seattle, WA</option>
+                    </select>
+                  </div>
+
+                  <h6 class="mb-3">Optional Extras</h6>
+                  <div class="list-group">
+                    <label class="list-group-item d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-center">
+                        <input class="form-check-input me-3" type="checkbox" name="extras" value="15" id="extra-gps">
+                        <div>
+                          <div class="fw-semibold">GPS Navigation</div>
+                          <small class="text-muted">Premium navigation system</small>
+                        </div>
+                      </div>
+                      <span class="badge bg-primary">€15/day</span>
+                    </label>
+                    <label class="list-group-item d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-center">
+                        <input class="form-check-input me-3" type="checkbox" name="extras" value="20" id="extra-wifi">
+                        <div>
+                          <div class="fw-semibold">WiFi Hotspot</div>
+                          <small class="text-muted">Unlimited data on the road</small>
+                        </div>
+                      </div>
+                      <span class="badge bg-primary">€20/day</span>
+                    </label>
+                    <label class="list-group-item d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-center">
+                        <input class="form-check-input me-3" type="checkbox" name="extras" value="25" id="extra-bike">
+                        <div>
+                          <div class="fw-semibold">Bike Rack</div>
+                          <small class="text-muted">Holds up to 2 bikes</small>
+                        </div>
+                      </div>
+                      <span class="badge bg-primary">€25/day</span>
+                    </label>
+                    <label class="list-group-item d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-center">
+                        <input class="form-check-input me-3" type="checkbox" name="extras" value="30" id="extra-chairs">
+                        <div>
+                          <div class="fw-semibold">Camping Chairs & Table</div>
+                          <small class="text-muted">4 chairs and folding table</small>
+                        </div>
+                      </div>
+                      <span class="badge bg-primary">€30/day</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Insurance -->
+              <div class="card mb-4" id="step-2">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    <i class="fas fa-shield-alt me-2"></i>Insurance Options
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div class="list-group">
+                    <label class="list-group-item">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex align-items-start">
+                          <input class="form-check-input me-3 mt-1" type="radio" name="insurance" value="25" id="insurance-basic" checked>
+                          <div>
+                            <div class="fw-semibold mb-1">Basic Coverage</div>
+                            <small class="text-muted d-block mb-2">Standard protection with €1,500 deductible</small>
+                            <ul class="small mb-0">
+                              <li>Third-party liability</li>
+                              <li>Theft protection</li>
+                              <li>Damage coverage</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <span class="badge bg-primary">€25/day</span>
+                      </div>
+                    </label>
+                    <label class="list-group-item">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex align-items-start">
+                          <input class="form-check-input me-3 mt-1" type="radio" name="insurance" value="45" id="insurance-premium">
+                          <div>
+                            <div class="fw-semibold mb-1">Premium Coverage <span class="badge badge-success">Popular</span></div>
+                            <small class="text-muted d-block mb-2">Enhanced protection with €500 deductible</small>
+                            <ul class="small mb-0">
+                              <li>Everything in Basic</li>
+                              <li>Reduced deductible (€500)</li>
+                              <li>Windscreen & tire coverage</li>
+                              <li>24/7 roadside assistance</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <span class="badge bg-primary">€45/day</span>
+                      </div>
+                    </label>
+                    <label class="list-group-item">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div class="d-flex align-items-start">
+                          <input class="form-check-input me-3 mt-1" type="radio" name="insurance" value="65" id="insurance-full">
+                          <div>
+                            <div class="fw-semibold mb-1">Full Coverage</div>
+                            <small class="text-muted d-block mb-2">Maximum protection with no deductible</small>
+                            <ul class="small mb-0">
+                              <li>Everything in Premium</li>
+                              <li>Zero deductible</li>
+                              <li>Personal belongings coverage</li>
+                              <li>Cancel for any reason</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <span class="badge bg-primary">€65/day</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Personal Details -->
+              <div class="card mb-4" id="step-3">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    <i class="fas fa-user me-2"></i>Your Details
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Please <a href="login.html" class="alert-link">sign in</a> or <a href="register.html" class="alert-link">create an account</a> to complete your booking.
+                  </div>
+
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">First Name</label>
+                      <input type="text" class="form-control" placeholder="John">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Last Name</label>
+                      <input type="text" class="form-control" placeholder="Doe">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Email</label>
+                      <input type="email" class="form-control" placeholder="john@example.com">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Phone</label>
+                      <input type="tel" class="form-control" placeholder="+1 (555) 123-4567">
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Driver's License Number</label>
+                      <input type="text" class="form-control" placeholder="DL123456789">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terms & Conditions -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="terms-check" required>
+                    <label class="form-check-label" for="terms-check">
+                      I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Cancellation Policy</a>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="age-check" required>
+                    <label class="form-check-label" for="age-check">
+                      I confirm that I am at least 25 years old and have held a valid driver's license for at least 2 years
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="d-flex gap-2">
+                <a href="vehicle-detail.html" class="btn btn-outline-secondary">
+                  <i class="fas fa-arrow-left me-2"></i>Back
+                </a>
+                <button type="button" class="btn btn-primary flex-fill" id="complete-booking-btn">
+                  <i class="fas fa-check me-2"></i>Complete Booking
+                </button>
+              </div>
+            </div>
+
+            <!-- Booking Summary Sidebar -->
+            <div class="col-lg-4">
+              <div class="card sticky-top" style="top: 90px;">
+                <div class="card-header">
+                  <h5 class="mb-0">Booking Summary</h5>
+                </div>
+                <div class="card-body">
+                  <!-- Vehicle Info -->
+                  <div class="d-flex mb-3">
+                    <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?auto=format&fit=crop&w=100&q=80" alt="Vehicle" class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                    <div>
+                      <h6 class="mb-1">Grand California 600</h6>
+                      <small class="text-muted">4 seats • 2 beds • Diesel</small>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <!-- Rental Details -->
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-2">
+                      <small class="text-muted">Pick-up</small>
+                      <small id="summary-pickup">-</small>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <small class="text-muted">Return</small>
+                      <small id="summary-return">-</small>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <small class="text-muted">Location</small>
+                      <small id="summary-location">-</small>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <!-- Price Breakdown -->
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>€180 × <span id="summary-days">0</span> days</span>
+                      <span id="summary-subtotal">€0</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Extras</span>
+                      <span id="summary-extras">€0</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Insurance</span>
+                      <span id="summary-insurance">€0</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Service fee</span>
+                      <span id="summary-service">€0</span>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <!-- Total -->
+                  <div class="d-flex justify-content-between mb-3">
+                    <strong>Total</strong>
+                    <strong style="color: var(--primary); font-size: 1.25rem;" id="summary-total">€0</strong>
+                  </div>
+
+                  <div class="alert alert-success mb-0">
+                    <i class="fas fa-shield-alt me-2"></i>
+                    <small><strong>Protected booking:</strong> Full refund if cancelled within 24 hours</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

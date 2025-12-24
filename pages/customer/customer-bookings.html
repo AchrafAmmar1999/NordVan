@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <div id="navbar-container"></div>
+
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="flex-fill" style="background-color: var(--background); min-height: calc(100vh - 73px);">
+      <div class="p-4">
+        <div class="mb-4">
+          <h2>My Bookings</h2>
+          <p class="text-muted">View and manage your vehicle bookings</p>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-4">
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#upcoming">My Bookings</a>
+          </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+          <!-- Upcoming Bookings -->
+          <div class="tab-pane fade show active" id="upcoming">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col-md-2">
+                    <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=150&h=100&fit=crop" class="img-fluid rounded" alt="Vehicle">
+                  </div>
+                  <div class="col-md-6">
+                    <h5 class="mb-1">Luxury Motorhome 2023</h5>
+                    <p class="text-muted mb-1"><i class="fas fa-map-marker-alt me-2"></i>Munich, Germany</p>
+                    <p class="text-muted mb-0"><i class="fas fa-calendar me-2"></i>Dec 25, 2025 - Jan 2, 2026</p>
+                  </div>
+                  <div class="col-md-2">
+                    <span class="badge bg-success">Confirmed</span>
+                    <p class="fw-bold mt-2 mb-0">€960</p>
+                  </div>
+                  <div class="col-md-2">
+                    <button class="btn btn-sm btn-outline-primary w-100 mb-2">View Details</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  </body>
+</html>

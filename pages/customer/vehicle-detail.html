@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Details - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <div id="navbar-container"></div>
+
+  <!-- Sidebar Toggle & Offcanvas -->
+  <div id="sidebar-container"></div>
+
+  <!-- Vehicle Detail Section -->
+  <section class="py-5">
+    <div class="container-custom">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="search.html">Search</a></li>
+          <li class="breadcrumb-item active">Grand California 600</li>
+        </ol>
+      </nav>
+
+      <div class="row g-4">
+        <!-- Left Column: Images -->
+        <div class="col-lg-7">
+          <!-- Main Image -->
+          <div class="card mb-3">
+            <div class="position-relative">
+              <img id="main-image" src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?auto=format&fit=crop&w=1200&q=80" alt="Grand California 600" class="w-100" style="border-radius: var(--radius-lg); max-height: 500px; object-fit: cover;">
+              <button class="wishlist-btn" data-vehicle-id="1" style="top: 20px; right: 20px;">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Thumbnail Gallery -->
+          <div class="row g-2 mb-4">
+            <div class="col-3">
+              <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?auto=format&fit=crop&w=300&q=80" class="img-thumbnail cursor-pointer thumbnail-img" style="cursor: pointer; height: 100px; object-fit: cover;">
+            </div>
+            <div class="col-3">
+              <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=300&q=80" class="img-thumbnail cursor-pointer thumbnail-img" style="cursor: pointer; height: 100px; object-fit: cover;">
+            </div>
+            <div class="col-3">
+              <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?auto=format&fit=crop&w=300&q=80" class="img-thumbnail cursor-pointer thumbnail-img" style="cursor: pointer; height: 100px; object-fit: cover;">
+            </div>
+            <div class="col-3">
+              <img src="https://images.unsplash.com/photo-1533137939062-b58f01c7c2ad?auto=format&fit=crop&w=300&q=80" class="img-thumbnail cursor-pointer thumbnail-img" style="cursor: pointer; height: 100px; object-fit: cover;">
+            </div>
+          </div>
+
+          <!-- About Vehicle -->
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">About this vehicle</h5>
+            </div>
+            <div class="card-body">
+              <p>Experience the ultimate freedom with the Grand California 600. This top-of-the-line motorhome combines comfort, convenience, and style, making it perfect for your next adventure. Whether you're planning a weekend getaway or an extended road trip, this vehicle has everything you need.</p>
+              <p>The spacious interior features a fully equipped kitchen, comfortable sleeping arrangements, and a modern bathroom with shower. The automatic transmission and powerful diesel engine ensure a smooth and enjoyable drive, while the latest safety features keep you and your passengers protected.</p>
+              <p class="mb-0">Perfect for couples or small families looking to explore in comfort and style.</p>
+            </div>
+          </div>
+
+          <!-- Technical Specifications -->
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">Technical Specifications</h5>
+            </div>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-ruler-combined fa-lg me-3" style="color: var(--primary); width: 30px;"></i>
+                    <div>
+                      <small class="text-muted d-block">Length</small>
+                      <strong>6.4m</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-weight fa-lg me-3" style="color: var(--primary); width: 30px;"></i>
+                    <div>
+                      <small class="text-muted d-block">Weight</small>
+                      <strong>3,500 kg</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-gas-pump fa-lg me-3" style="color: var(--primary); width: 30px;"></i>
+                    <div>
+                      <small class="text-muted d-block">Fuel Tank</small>
+                      <strong>75 liters</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-tint fa-lg me-3" style="color: var(--primary); width: 30px;"></i>
+                    <div>
+                      <small class="text-muted d-block">Water Tank</small>
+                      <strong>110 liters</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Features & Amenities -->
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">Features & Amenities</h5>
+            </div>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>Kitchen with stove & sink</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>Air Conditioning</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>Shower & Toilet</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>Heating System</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>Refrigerator</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>Solar Panels</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>GPS Navigation</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
+                    <span>WiFi Onboard</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- License Requirements -->
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">License Requirements</h5>
+            </div>
+            <div class="card-body">
+              <div class="alert alert-info mb-0">
+                <i class="fas fa-id-card me-2"></i>
+                <strong>Valid driver's license required:</strong> Category B (standard car license) with at least 2 years of driving experience.
+              </div>
+            </div>
+          </div>
+
+          <!-- Provider Info -->
+          <div class="card">
+            <div class="card-header">
+              <h5 class="mb-0">Hosted by Marcus</h5>
+            </div>
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-3">
+                <img src="https://ui-avatars.com/api/?name=Marcus+J&size=80&background=2563eb&color=fff" alt="Marcus" class="rounded-circle me-3">
+                <div>
+                  <h6 class="mb-1">Marcus J.</h6>
+                  
+                  <small class="text-muted">Member since 2023</small>
+                </div>
+              </div>
+              <p class="mb-0">Experienced provider with a passion for helping people explore the world on wheels. All vehicles are meticulously maintained and fully insured.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Booking -->
+        <div class="col-lg-5">
+          <div class="card sticky-top" style="top: 93px;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h3 class="mb-1">€180 <small class="text-muted fs-6">/ day</small></h3>
+                
+                </div>
+                <span class="badge badge-success">Available</span>
+              </div>
+
+              <!-- Quick Info -->
+              <div class="row g-2 mb-4">
+                <div class="col-6">
+                  <div class="text-center p-2" style="background-color: var(--muted); border-radius: var(--radius-md);">
+                    <i class="fas fa-users mb-1" style="color: var(--primary);"></i>
+                    <div><small><strong>4 Seats</strong></small></div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-center p-2" style="background-color: var(--muted); border-radius: var(--radius-md);">
+                    <i class="fas fa-bed mb-1" style="color: var(--primary);"></i>
+                    <div><small><strong>2 Beds</strong></small></div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-center p-2" style="background-color: var(--muted); border-radius: var(--radius-md);">
+                    <i class="fas fa-gas-pump mb-1" style="color: var(--primary);"></i>
+                    <div><small><strong>Diesel</strong></small></div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-center p-2" style="background-color: var(--muted); border-radius: var(--radius-md);">
+                    <i class="fas fa-cog mb-1" style="color: var(--primary);"></i>
+                    <div><small><strong>Automatic</strong></small></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Booking Form -->
+              <form id="booking-form">
+                <input type="hidden" id="base-price" value="180">
+                <input type="hidden" id="rental-days" value="0">
+
+                <!-- Dates -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Rental Period</label>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <label class="form-label small">Pick-up</label>
+                      <input type="date" class="form-control" id="pickup-date" name="pickup-date" data-min-today required>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small">Return</label>
+                      <input type="date" class="form-control" id="return-date" name="return-date" data-min-today required>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Location -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Pick-up Location</label>
+                  <select class="form-select" name="location" required>
+                    <option value="">Select location</option>
+                    <option value="san-francisco">San Francisco, CA</option>
+                    <option value="los-angeles">Los Angeles, CA</option>
+                    <option value="seattle">Seattle, WA</option>
+                  </select>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="card mb-3" style="background-color: var(--muted);">
+                  <div class="card-body">
+                    <h6 class="mb-3">Price Breakdown</h6>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>€180 × <span id="days-display">0</span> days</span>
+                      <span id="subtotal">€0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Service fee</span>
+                      <span id="service-fee">€0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Insurance</span>
+                      <span id="insurance-fee">€0.00</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                      <strong>Total</strong>
+                      <strong id="total" style="color: var(--primary);">€0.00</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100 mb-3">
+                  <i class="fas fa-calendar-check me-2"></i>Start Booking
+                </button>
+                <p class="text-center text-muted small mb-0">You won't be charged yet</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container-custom">
+      <div class="text-center text-muted">
+        <p class="mb-0">&copy; 2025 NordVan. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

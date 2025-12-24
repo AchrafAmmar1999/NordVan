@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Vehicles - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="d-flex">
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="flex-fill" style="background-color: var(--background); min-height: calc(100vh - 73px);">
+      <div class="p-4">
+        <div class="mb-4 d-flex justify-content-between align-items-center">
+          <div>
+            <h2>My Vehicles</h2>
+            <p class="text-muted">Manage your motorhome listings</p>
+          </div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createVehicleModal">
+            <i class="fas fa-plus me-2"></i>Add New Vehicle
+          </button>
+        </div>
+
+        <!-- Vehicles List -->
+        <div class="row g-4">
+          <!-- Sample Vehicle Card -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400&h=250&fit=crop" class="card-img-top" alt="Vehicle">
+              <div class="card-body">
+                <h5 class="card-title">Luxury Motorhome 2023</h5>
+                <p class="text-muted mb-2"><i class="fas fa-map-marker-alt me-2"></i>Munich, Germany</p>
+                <p class="text-primary fw-bold mb-3">€120 / day</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary flex-fill" data-bs-toggle="modal" data-bs-target="#editVehicleModal">
+                    <i class="fas fa-edit me-1"></i>Edit
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger flex-fill">
+                    <i class="fas fa-trash me-1"></i>Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Add more vehicle cards here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Vehicle Modal -->
+  <div class="modal fade" id="createVehicleModal" tabindex="-1" aria-labelledby="createVehicleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createVehicleModalLabel">
+            <i class="fas fa-caravan me-2"></i>Add New Vehicle
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="createVehicleForm">
+            <!-- Basic Information -->
+            <h6 class="mb-3 fw-bold">Basic Information</h6>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="vehicleName" class="form-label">Vehicle Name *</label>
+                <input type="text" class="form-control" id="vehicleName" required>
+              </div>
+              <div class="col-md-6">
+                <label for="vehicleType" class="form-label">Type *</label>
+                <select class="form-select" id="vehicleType" required>
+                  <option value="">Select type</option>
+                  <option value="Class A">Class A</option>
+                  <option value="Class B">Class B</option>
+                  <option value="Class C">Class C</option>
+                  <option value="Travel Trailer">Travel Trailer</option>
+                  <option value="Fifth Wheel">Fifth Wheel</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="vehicleMake" class="form-label">Make *</label>
+                <input type="text" class="form-control" id="vehicleMake" placeholder="e.g., Mercedes, Ford" required>
+              </div>
+              <div class="col-md-6">
+                <label for="vehicleYear" class="form-label">Year *</label>
+                <input type="number" class="form-control" id="vehicleYear" min="1990" max="2025" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="vehicleDescription" class="form-label">Description *</label>
+              <textarea class="form-control" id="vehicleDescription" rows="3" required></textarea>
+            </div>
+
+            <!-- Location & Pricing -->
+            <h6 class="mb-3 fw-bold mt-4">Location & Pricing</h6>
+            <div class="row mb-3">
+              <div class="col-md-8">
+                <label for="vehicleLocation" class="form-label">Location *</label>
+                <input type="text" class="form-control" id="vehicleLocation" placeholder="City, Country" required>
+              </div>
+              <div class="col-md-4">
+                <label for="vehiclePrice" class="form-label">Price per Day (€) *</label>
+                <input type="number" class="form-control" id="vehiclePrice" min="1" required>
+              </div>
+            </div>
+
+            <!-- Specifications -->
+            <h6 class="mb-3 fw-bold mt-4">Specifications</h6>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="vehicleSeats" class="form-label">Seats *</label>
+                <input type="number" class="form-control" id="vehicleSeats" min="1" max="12" required>
+              </div>
+              <div class="col-md-4">
+                <label for="vehicleBeds" class="form-label">Beds *</label>
+                <input type="number" class="form-control" id="vehicleBeds" min="1" max="10" required>
+              </div>
+              <div class="col-md-4">
+                <label for="vehicleLength" class="form-label">Length (m)</label>
+                <input type="number" class="form-control" id="vehicleLength" step="0.1" min="3" max="15">
+              </div>
+            </div>
+
+            <!-- Features -->
+            <h6 class="mb-3 fw-bold mt-4">Features</h6>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="featureKitchen">
+                  <label class="form-check-label" for="featureKitchen">
+                    <i class="fas fa-utensils me-1"></i>Kitchen
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="featureBathroom">
+                  <label class="form-check-label" for="featureBathroom">
+                    <i class="fas fa-bath me-1"></i>Bathroom
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="featureAC">
+                  <label class="form-check-label" for="featureAC">
+                    <i class="fas fa-snowflake me-1"></i>Air Conditioning
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="featureWifi">
+                  <label class="form-check-label" for="featureWifi">
+                    <i class="fas fa-wifi me-1"></i>WiFi
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="featureSolar">
+                  <label class="form-check-label" for="featureSolar">
+                    <i class="fas fa-solar-panel me-1"></i>Solar Panels
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="featureParking">
+                  <label class="form-check-label" for="featureParking">
+                    <i class="fas fa-car me-1"></i>Parking Sensors
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Images -->
+            <h6 class="mb-3 fw-bold mt-4">Images</h6>
+            <div class="mb-3">
+              <label for="vehicleImages" class="form-label">Upload Images</label>
+              <input type="file" class="form-control" id="vehicleImages" multiple accept="image/*">
+              <div class="form-text">You can upload multiple images (max 10)</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="createVehicle()">
+            <i class="fas fa-save me-2"></i>Create Vehicle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Vehicle Modal -->
+  <div class="modal fade" id="editVehicleModal" tabindex="-1" aria-labelledby="editVehicleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editVehicleModalLabel">
+            <i class="fas fa-edit me-2"></i>Edit Vehicle
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editVehicleForm">
+            <!-- Basic Information -->
+            <h6 class="mb-3 fw-bold">Basic Information</h6>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="editVehicleName" class="form-label">Vehicle Name *</label>
+                <input type="text" class="form-control" id="editVehicleName" value="Luxury Motorhome 2023" required>
+              </div>
+              <div class="col-md-6">
+                <label for="editVehicleType" class="form-label">Type *</label>
+                <select class="form-select" id="editVehicleType" required>
+                  <option value="Class A" selected>Class A</option>
+                  <option value="Class B">Class B</option>
+                  <option value="Class C">Class C</option>
+                  <option value="Travel Trailer">Travel Trailer</option>
+                  <option value="Fifth Wheel">Fifth Wheel</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="editVehicleMake" class="form-label">Make *</label>
+                <input type="text" class="form-control" id="editVehicleMake" value="Mercedes" required>
+              </div>
+              <div class="col-md-6">
+                <label for="editVehicleYear" class="form-label">Year *</label>
+                <input type="number" class="form-control" id="editVehicleYear" value="2023" min="1990" max="2025" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="editVehicleDescription" class="form-label">Description *</label>
+              <textarea class="form-control" id="editVehicleDescription" rows="3" required>Spacious and modern luxury motorhome perfect for family adventures.</textarea>
+            </div>
+
+            <!-- Location & Pricing -->
+            <h6 class="mb-3 fw-bold mt-4">Location & Pricing</h6>
+            <div class="row mb-3">
+              <div class="col-md-8">
+                <label for="editVehicleLocation" class="form-label">Location *</label>
+                <input type="text" class="form-control" id="editVehicleLocation" value="Munich, Germany" required>
+              </div>
+              <div class="col-md-4">
+                <label for="editVehiclePrice" class="form-label">Price per Day (€) *</label>
+                <input type="number" class="form-control" id="editVehiclePrice" value="120" min="1" required>
+              </div>
+            </div>
+
+            <!-- Specifications -->
+            <h6 class="mb-3 fw-bold mt-4">Specifications</h6>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="editVehicleSeats" class="form-label">Seats *</label>
+                <input type="number" class="form-control" id="editVehicleSeats" value="4" min="1" max="12" required>
+              </div>
+              <div class="col-md-4">
+                <label for="editVehicleBeds" class="form-label">Beds *</label>
+                <input type="number" class="form-control" id="editVehicleBeds" value="4" min="1" max="10" required>
+              </div>
+              <div class="col-md-4">
+                <label for="editVehicleLength" class="form-label">Length (m)</label>
+                <input type="number" class="form-control" id="editVehicleLength" value="7.5" step="0.1" min="3" max="15">
+              </div>
+            </div>
+
+            <!-- Features -->
+            <h6 class="mb-3 fw-bold mt-4">Features</h6>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="editFeatureKitchen" checked>
+                  <label class="form-check-label" for="editFeatureKitchen">
+                    <i class="fas fa-utensils me-1"></i>Kitchen
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="editFeatureBathroom" checked>
+                  <label class="form-check-label" for="editFeatureBathroom">
+                    <i class="fas fa-bath me-1"></i>Bathroom
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="editFeatureAC" checked>
+                  <label class="form-check-label" for="editFeatureAC">
+                    <i class="fas fa-snowflake me-1"></i>Air Conditioning
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="editFeatureWifi" checked>
+                  <label class="form-check-label" for="editFeatureWifi">
+                    <i class="fas fa-wifi me-1"></i>WiFi
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="editFeatureSolar">
+                  <label class="form-check-label" for="editFeatureSolar">
+                    <i class="fas fa-solar-panel me-1"></i>Solar Panels
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="editFeatureParking" checked>
+                  <label class="form-check-label" for="editFeatureParking">
+                    <i class="fas fa-car me-1"></i>Parking Sensors
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Images -->
+            <h6 class="mb-3 fw-bold mt-4">Images</h6>
+            <div class="mb-3">
+              <label for="editVehicleImages" class="form-label">Upload New Images</label>
+              <input type="file" class="form-control" id="editVehicleImages" multiple accept="image/*">
+              <div class="form-text">Upload new images to replace existing ones</div>
+            </div>
+
+            <!-- Availability -->
+            <h6 class="mb-3 fw-bold mt-4">Availability</h6>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="editVehicleAvailable" checked>
+              <label class="form-check-label" for="editVehicleAvailable">
+                Vehicle is available for booking
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="updateVehicle()">
+            <i class="fas fa-save me-2"></i>Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

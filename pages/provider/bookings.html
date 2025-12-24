@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookings - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="d-flex">
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="flex-fill" style="background-color: var(--background); min-height: calc(100vh - 73px);">
+      <div class="p-4">
+        <div class="mb-4">
+          <h2>Bookings</h2>
+          <p class="text-muted">View your booked vehicles</p>
+        </div>
+
+        <!-- Booked Vehicles -->
+        <div class="row g-4">
+          <!-- Booking Card 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400&h=250&fit=crop" class="card-img-top" alt="Vehicle">
+              <div class="card-body">
+                <h5 class="card-title">Luxury Motorhome 2023</h5>
+                <div class="mb-3">
+                  <p class="mb-2"><i class="fas fa-user text-primary me-2"></i><strong>Renter:</strong> John Doe</p>
+                  <p class="mb-2"><i class="fas fa-calendar text-primary me-2"></i><strong>Dates:</strong> Dec 25, 2025 - Jan 2, 2026</p>
+                  <p class="mb-2"><i class="fas fa-euro-sign text-primary me-2"></i><strong>Total:</strong> €960</p>
+                  <span class="badge bg-success">Confirmed</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary flex-fill">
+                    <i class="fas fa-info-circle me-1"></i>Details
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary flex-fill">
+                    <i class="fas fa-envelope me-1"></i>Contact
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Card 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=400&h=250&fit=crop" class="card-img-top" alt="Vehicle">
+              <div class="card-body">
+                <h5 class="card-title">Sprinter Van 4x4</h5>
+                <div class="mb-3">
+                  <p class="mb-2"><i class="fas fa-user text-primary me-2"></i><strong>Renter:</strong> Lisa Kim</p>
+                  <p class="mb-2"><i class="fas fa-calendar text-primary me-2"></i><strong>Dates:</strong> Jan 10, 2026 - Jan 20, 2026</p>
+                  <p class="mb-2"><i class="fas fa-euro-sign text-primary me-2"></i><strong>Total:</strong> €1,200</p>
+                  <span class="badge bg-warning text-dark">Pending</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-success flex-fill">
+                    <i class="fas fa-check me-1"></i>Accept
+                  </button>
+                  <button class="btn btn-sm btn-danger flex-fill">
+                    <i class="fas fa-times me-1"></i>Decline
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Card 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=400&h=250&fit=crop" class="card-img-top" alt="Vehicle">
+              <div class="card-body">
+                <h5 class="card-title">VW Transporter</h5>
+                <div class="mb-3">
+                  <p class="mb-2"><i class="fas fa-user text-primary me-2"></i><strong>Renter:</strong> James Rodriguez</p>
+                  <p class="mb-2"><i class="fas fa-calendar text-primary me-2"></i><strong>Dates:</strong> Feb 5, 2026 - Feb 12, 2026</p>
+                  <p class="mb-2"><i class="fas fa-euro-sign text-primary me-2"></i><strong>Total:</strong> €840</p>
+                  <span class="badge bg-success">Confirmed</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary flex-fill">
+                    <i class="fas fa-info-circle me-1"></i>Details
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary flex-fill">
+                    <i class="fas fa-envelope me-1"></i>Contact
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

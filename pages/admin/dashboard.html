@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - NordVan</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <div id="navbar-container"></div>
+
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="flex-fill" style="background-color: var(--background); min-height: calc(100vh - 73px);">
+      <div class="p-4">
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content">
+          <div class="mb-5">
+            <h2>Welcome, <span id="adminName">Admin</span>!</h2>
+            <p class="text-muted">Manage your system from here</p>
+          </div>
+
+          <!-- Dashboard Cards -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-6">
+              <a href="user-management.html" class="text-decoration-none">
+                <div class="dashboard-card">
+                  <div class="d-flex align-items-center">
+                    <div class="dashboard-card-icon" style="background-color: rgba(37, 99, 235, 0.1);">
+                      <i class="fas fa-users fa-2x" style="color: var(--primary);"></i>
+                    </div>
+                    <div class="ms-4">
+                      <h4 class="mb-1">Users</h4>
+                      <p class="text-muted mb-0">Manage all users</p>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <i class="fas fa-arrow-right" style="color: var(--primary);"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <a href="vehicle-management.html" class="text-decoration-none">
+                <div class="dashboard-card">
+                  <div class="d-flex align-items-center">
+                    <div class="dashboard-card-icon" style="background-color: rgba(22, 163, 74, 0.1);">
+                      <i class="fas fa-caravan fa-2x" style="color: var(--success);"></i>
+                    </div>
+                    <div class="ms-4">
+                      <h4 class="mb-1">Providers</h4>
+                      <p class="text-muted mb-0">Manage vehicles & providers</p>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <i class="fas fa-arrow-right" style="color: var(--success);"></i>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hidden old stats for reference -->
+          <div class="row g-4 mb-4" style="display: none;">
+            <div class="col-md-3">
+              <div class="stats-card">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div>
+                    <div class="stats-label">Total Users</div>
+                    <div class="stats-value">1,248</div>
+                  </div>
+                  <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                       style="width: 48px; height: 48px; background-color: var(--secondary);">
+                    <i class="fas fa-users fa-lg" style="color: var(--primary);"></i>
+                  </div>
+                </div>
+                <div class="stats-change positive">
+                  <i class="fas fa-arrow-up me-1"></i>+42 this month
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="stats-card">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div>
+                    <div class="stats-label">Total Vehicles</div>
+                    <div class="stats-value">386</div>
+                  </div>
+                  <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                       style="width: 48px; height: 48px; background-color: rgba(22, 163, 74, 0.1);">
+                    <i class="fas fa-caravan fa-lg" style="color: var(--success);"></i>
+                  </div>
+                </div>
+                <div class="stats-change positive">
+                  <i class="fas fa-arrow-up me-1"></i>+15 this month
+                </div>
+              </div>
+            </div>
+
+          <!-- Recent Users & Vehicles Tables -->
+          <div class="row g-4 mb-4">
+            <!-- Recent Users -->
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Recent Users</h5>
+                  <button class="btn btn-sm btn-primary" data-tab="users">
+                    See All Users <i class="fas fa-arrow-right ms-1"></i>
+                  </button>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://ui-avatars.com/api/?name=Alex+Martinez&size=32&background=random" class="rounded-circle me-2">
+                            <div>
+                              <div class="fw-semibold small">user</div>
+                              <small class="text-muted">user.m@example.com</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="badge badge-secondary">Customer</span></td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1248', 'Alex Martinez', 'alex.m@example.com', 'customer', 'active')">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://ui-avatars.com/api/?name=Lisa+Kim&size=32&background=random" class="rounded-circle me-2">
+                            <div>
+                              <div class="fw-semibold small">me nate</div>
+                              <small class="text-muted">nate.k@example.com</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="badge" style="background-color: var(--accent);">Provider</span></td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1247', 'Lisa Kim', 'lisa.k@example.com', 'provider', 'active')">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://ui-avatars.com/api/?name=James+Rodriguez&size=32&background=random" class="rounded-circle me-2">
+                            <div>
+                              <div class="fw-semibold small">neffex</div>
+                              <small class="text-muted">neffex.r@example.com</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td><span class="badge badge-secondary">Customer</span></td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1246', 'James Rodriguez', 'james.r@example.com', 'customer', 'active')">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer text-center">
+                  <button class="btn btn-sm btn-success" onclick="openAddUserModal()">
+                    <i class="fas fa-plus me-1"></i>Add New User
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Vehicles -->
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Recent Vehicles</h5>
+                  <button class="btn btn-sm btn-primary" data-tab="vehicles">
+                    See All Vehicles <i class="fas fa-arrow-right ms-1"></i>
+                  </button>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Vehicle</th>
+                        <th>Price/Day</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?auto=format&fit=crop&w=40&q=80" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                            <div>
+                              <div class="fw-semibold small">Grand California 600</div>
+                              <small class="text-muted">Marcus J.</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>€180</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary" onclick="openEditVehicleModal('1', 'Grand California 600', 'Marcus J.', '180', 'motorhome', 'active')">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=40&q=80" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                            <div>
+                              <div class="fw-semibold small">Nomad Sprinter 4x4</div>
+                              <small class="text-muted">Lisa K.</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>€210</td>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary" onclick="openEditVehicleModal('2', 'Nomad Sprinter 4x4', 'Lisa K.', '210', 'campervan', 'active')">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?auto=format&fit=crop&w=40&q=80" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                            <div>
+                              <div class="fw-semibold small">Cozy VW Transporter</div>
+                              <small class="text-muted">James R.</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>€145</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary" onclick="openEditVehicleModal('3', 'Cozy VW Transporter', 'James R.', '145', 'campervan', 'pending')">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer text-center">
+                  <button class="btn btn-sm btn-success" onclick="openAddVehicleModal()">
+                    <i class="fas fa-plus me-1"></i>Add New Vehicle
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Management Tab -->
+        <div id="users-tab" class="tab-content" style="display: none;">
+          <div class="mb-4 d-flex justify-content-between align-items-center">
+            <div>
+              <h2>User Management</h2>
+              <p class="text-muted mb-0">Manage customers, providers, and administrators</p>
+            </div>
+            <button class="btn btn-success" onclick="openAddUserModal()">
+              <i class="fas fa-plus me-2"></i>Add New User
+            </button>
+          </div>
+
+          <!-- Filters -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <input type="text" class="form-control" placeholder="Search users...">
+                </div>
+                <div class="col-md-3">
+                  <select class="form-select">
+                    <option value="">All Roles</option>
+                    <option value="customer">Customer</option>
+                    <option value="provider">Provider</option>
+                    <option value="admin">Administrator</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <select class="form-select">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary w-100">Filter</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Users Table -->
+          <div class="card">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://ui-avatars.com/api/?name=Alex+Martinez&size=40&background=random" class="rounded-circle me-3">
+                        <div>
+                          <div class="fw-semibold">Alex Martinez</div>
+                          <small class="text-muted">ID: #1248</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>alex.m@example.com</td>
+                    <td><span class="badge badge-secondary">Customer</span></td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1248', 'Alex Martinez', 'alex.m@example.com', 'customer', 'active')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://ui-avatars.com/api/?name=Lisa+Kim&size=40&background=random" class="rounded-circle me-3">
+                        <div>
+                          <div class="fw-semibold">Lisa Kim</div>
+                          <small class="text-muted">ID: #1247</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>lisa.k@example.com</td>
+                    <td><span class="badge" style="background-color: var(--accent); color: var(--accent-foreground);">Provider</span></td>
+                    <td>Dec 10, 2025</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1247', 'Lisa Kim', 'lisa.k@example.com', 'provider', 'active')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://ui-avatars.com/api/?name=James+Rodriguez&size=40&background=random" class="rounded-circle me-3">
+                        <div>
+                          <div class="fw-semibold">James Rodriguez</div>
+                          <small class="text-muted">ID: #1246</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>james.r@example.com</td>
+                    <td><span class="badge badge-secondary">Customer</span></td>
+                    <td>Dec 08, 2025</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1246', 'James Rodriguez', 'james.r@example.com', 'customer', 'active')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://ui-avatars.com/api/?name=Emma+Smith&size=40&background=random" class="rounded-circle me-3">
+                        <div>
+                          <div class="fw-semibold">Emma Smith</div>
+                          <small class="text-muted">ID: #1245</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>emma.s@example.com</td>
+                    <td><span class="badge" style="background-color: var(--accent); color: var(--accent-foreground);">Provider</span></td>
+                    <td>Dec 05, 2025</td>
+                    <td><span class="badge badge-warning">Pending</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1245', 'Emma Smith', 'emma.s@example.com', 'provider', 'pending')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://ui-avatars.com/api/?name=Tom+Harris&size=40&background=random" class="rounded-circle me-3">
+                        <div>
+                          <div class="fw-semibold">Tom Harris</div>
+                          <small class="text-muted">ID: #1244</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>tom.h@example.com</td>
+                    <td><span class="badge badge-danger">Admin</span></td>
+                    <td>Nov 28, 2025</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary" onclick="openEditUserModal('1244', 'Tom Harris', 'tom.h@example.com', 'admin', 'active')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer">
+              <nav>
+                <ul class="pagination pagination-sm justify-content-center mb-0">
+                  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vehicles Tab -->
+        <div id="vehicles-tab" class="tab-content" style="display: none;">
+          <div class="mb-4 d-flex justify-content-between align-items-center">
+            <div>
+              <h2>Vehicle Overview</h2>
+              <p class="text-muted mb-0">Monitor and manage all vehicles on the platform</p>
+            </div>
+            <button class="btn btn-success" onclick="openAddVehicleModal()">
+              <i class="fas fa-plus me-2"></i>Add New Vehicle
+            </button>
+          </div>
+
+          <!-- Vehicle Stats -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-3">
+              <div class="card text-center">
+                <div class="card-body">
+                  <h3 class="mb-0">386</h3>
+                  <small class="text-muted">Total Vehicles</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-center">
+                <div class="card-body">
+                  <h3 class="mb-0">312</h3>
+                  <small class="text-muted">Active Listings</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-center">
+                <div class="card-body">
+                  <h3 class="mb-0">86</h3>
+                  <small class="text-muted">Currently Rented</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-center">
+                <div class="card-body">
+                  <h3 class="mb-0">15</h3>
+                  <small class="text-muted">Pending Approval</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vehicles Table -->
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="mb-0">All Vehicles</h5>
+                </div>
+                <div class="col-auto">
+                  <input type="text" class="form-control" placeholder="Search vehicles...">
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Vehicle</th>
+                    <th>Provider</th>
+                    <th>Type</th>
+                    <th>Price/Day</th>
+                    <th>Rating</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?auto=format&fit=crop&w=50&q=80" class="rounded me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                        <div>
+                          <div class="fw-semibold">Grand California 600</div>
+                          <small class="text-muted">4 seats • 2 beds</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Marcus J.</td>
+                    <td>Motorhome</td>
+                    <td>€180</td>
+                    <td>
+                      <div class="text-warning">
+                        <i class="fas fa-star"></i> 4.9
+                      </div>
+                    </td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary" onclick="openEditVehicleModal('1', 'Grand California 600', 'Marcus J.', '180', 'motorhome', 'active')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=50&q=80" class="rounded me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                        <div>
+                          <div class="fw-semibold">Nomad Sprinter 4x4</div>
+                          <small class="text-muted">2 seats • 2 beds</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Lisa K.</td>
+                    <td>Campervan</td>
+                    <td>€210</td>
+                    <td>
+                      <div class="text-warning">
+                        <i class="fas fa-star"></i> 4.8
+                      </div>
+                    </td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary" onclick="openEditVehicleModal('2', 'Nomad Sprinter 4x4', 'Lisa K.', '210', 'campervan', 'active')">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?auto=format&fit=crop&w=50&q=80" class="rounded me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                        <div>
+                          <div class="fw-semibold">Cozy VW Transporter</div>
+                          <small class="text-muted">2 seats • 2 beds</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>James R.</td>
+                    <td>Campervan</td>
+                    <td>€145</td>
+                    <td>
+                      <div class="text-warning">
+                        <i class="fas fa-star"></i> 4.7
+                      </div>
+                    </td>
+                    <td><span class="badge badge-warning">Pending</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-success">Approve</button>
+                      <button class="btn btn-sm btn-outline-danger">Reject</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Settings Tab -->
+        <div id="settings-tab" class="tab-content" style="display: none;">
+          <div class="mb-4">
+            <h2>System Settings</h2>
+            <p class="text-muted">Configure system preferences and appearance</p>
+          </div>
+
+          <div class="row g-4">
+            <!-- User Details & Profile -->
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0"><i class="fas fa-user-cog me-2"></i>User Profile</h5>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label class="form-label">Full Name</label>
+                      <input type="text" class="form-control" value="Admin User" placeholder="Enter full name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Email Address</label>
+                      <input type="email" class="form-control" value="admin@NordVan.com" placeholder="Enter email">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" value="+49 123 456789" placeholder="Enter phone">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Role</label>
+                      <select class="form-select" disabled>
+                        <option selected>Super Administrator</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-save me-2"></i>Save Changes
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Appearance Settings -->
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0"><i class="fas fa-palette me-2"></i>Appearance</h5>
+                </div>
+                <div class="card-body">
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">Theme</label>
+                    <div class="row g-3">
+                      <div class="col-6">
+                        <div class="card border-2 cursor-pointer theme-option" data-theme="light" style="border-color: var(--primary);">
+                          <div class="card-body text-center p-3">
+                            <i class="fas fa-sun fa-2x mb-2" style="color: var(--accent);"></i>
+                            <div class="fw-semibold">Light Mode</div>
+                            <small class="text-muted">Default theme</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="card border cursor-pointer theme-option" data-theme="dark">
+                          <div class="card-body text-center p-3">
+                            <i class="fas fa-moon fa-2x mb-2" style="color: var(--primary);"></i>
+                            <div class="fw-semibold">Dark Mode</div>
+                            <small class="text-muted">Coming soon</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">Primary Color</label>
+                    <div class="row g-2">
+                      <div class="col-auto">
+                        <div class="color-picker-item active" data-color="#2563eb" style="background-color: #2563eb;"></div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="color-picker-item" data-color="#16a34a" style="background-color: #16a34a;"></div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="color-picker-item" data-color="#f59e0b" style="background-color: #f59e0b;"></div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="color-picker-item" data-color="#dc2626" style="background-color: #dc2626;"></div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="color-picker-item" data-color="#7c3aed" style="background-color: #7c3aed;"></div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="color-picker-item" data-color="#ea580c" style="background-color: #ea580c;"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">Font Size</label>
+                    <select class="form-select">
+                      <option>Small</option>
+                      <option selected>Medium (Default)</option>
+                      <option>Large</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="compactMode">
+                      <label class="form-check-label" for="compactMode">
+                        Compact Mode
+                      </label>
+                    </div>
+                    <small class="text-muted">Reduce spacing for denser content</small>
+                  </div>
+
+                  <button type="button" class="btn btn-primary">
+                    <i class="fas fa-check me-2"></i>Apply Settings
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Security</h5>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label">Current Password</label>
+                    <input type="password" class="form-control" placeholder="Enter current password">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">New Password</label>
+                    <input type="password" class="form-control" placeholder="Enter new password">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Confirm New Password</label>
+                    <input type="password" class="form-control" placeholder="Confirm new password">
+                  </div>
+                  <button type="button" class="btn btn-warning">
+                    <i class="fas fa-key me-2"></i>Change Password
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0"><i class="fas fa-bell me-2"></i>Notifications</h5>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" id="emailNotif" checked>
+                      <label class="form-check-label" for="emailNotif">
+                        Email Notifications
+                      </label>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" id="newUserNotif" checked>
+                      <label class="form-check-label" for="newUserNotif">
+                        New User Registration
+                      </label>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" id="newVehicleNotif" checked>
+                      <label class="form-check-label" for="newVehicleNotif">
+                        New Vehicle Listing
+                      </label>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" id="bookingNotif" checked>
+                      <label class="form-check-label" for="bookingNotif">
+                        Booking Notifications
+                      </label>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary">
+                    <i class="fas fa-save me-2"></i>Save Preferences
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit User Modal -->
+  <div class="modal fade" id="userModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="userModalTitle">Add New User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="userForm">
+            <input type="hidden" id="userId">
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="userName" required placeholder="Enter full name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="userEmail" required placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Role</label>
+              <select class="form-select" id="userRole" required>
+                <option value="">Select role...</option>
+                <option value="customer">Customer</option>
+                <option value="provider">Provider</option>
+                <option value="admin">Administrator</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Status</label>
+              <select class="form-select" id="userStatus" required>
+                <option value="active">Active</option>
+                <option value="suspended">Suspended</option>
+                <option value="pending">Pending</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="saveUser()">
+            <i class="fas fa-save me-2"></i>Save User
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Vehicle Modal -->
+  <div class="modal fade" id="vehicleModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="vehicleModalTitle">Add New Vehicle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="vehicleForm">
+            <input type="hidden" id="vehicleId">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Vehicle Name</label>
+                <input type="text" class="form-control" id="vehicleName" required placeholder="e.g., Grand California 600">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Provider</label>
+                <input type="text" class="form-control" id="vehicleProvider" required placeholder="Provider name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Type</label>
+                <select class="form-select" id="vehicleType" required>
+                  <option value="">Select type...</option>
+                  <option value="motorhome">Motorhome</option>
+                  <option value="campervan">Campervan</option>
+                  <option value="rv">RV</option>
+                  <option value="caravan">Caravan</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Price per Day (€)</label>
+                <input type="number" class="form-control" id="vehiclePrice" required placeholder="180">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Seats</label>
+                <input type="number" class="form-control" id="vehicleSeats" placeholder="4">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Beds</label>
+                <input type="number" class="form-control" id="vehicleBeds" placeholder="2">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Status</label>
+                <select class="form-select" id="vehicleStatus" required>
+                  <option value="active">Active</option>
+                  <option value="pending">Pending</option>
+                  <option value="suspended">Suspended</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Fuel Type</label>
+                <select class="form-select" id="vehicleFuel">
+                  <option value="diesel">Diesel</option>
+                  <option value="petrol">Petrol</option>
+                  <option value="electric">Electric</option>
+                  <option value="hybrid">Hybrid</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" id="vehicleDescription" rows="3" placeholder="Enter vehicle description..."></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="saveVehicle()">
+            <i class="fas fa-save me-2"></i>Save Vehicle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
